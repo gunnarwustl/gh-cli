@@ -15,5 +15,5 @@ jobs:
         id: filter
         with: 
           filters: |
-            ${{ env.container_name }}:
-              - ${{ env.docker_file }}
+            ${{ container_name }}:
+              - ${{ docker_file }}

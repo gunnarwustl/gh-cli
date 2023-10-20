@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Diff Check
         uses: ./.github/workflows/steps/diff-check.yaml
+        with:
+          container_name: ${{ env.container_name }}
+          docker_file: ${{ env.docker_file }}
   
   build_push:
     runs-on: ubuntu-latest
