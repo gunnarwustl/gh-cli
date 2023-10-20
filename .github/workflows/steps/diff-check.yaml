@@ -3,7 +3,7 @@ name: Diff Check
 
 jobs:
   diff_check:
-    runs-on: ${{ github_runner }}
+    runs-on: ubuntu-latest
     outputs:
       ${{ container_name }}: ${{ steps.filter.outputs.${{ container_name }} }}
     steps:
