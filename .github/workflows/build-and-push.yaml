@@ -17,11 +17,11 @@ jobs:
     runs-on: ${{ github_runner }}
     steps:
       - name: Diff Check
-        uses: .github/workflows/steps/diff-check.yaml
+        uses: ./.github/workflows/steps/diff-check.yaml
   build:
     runs-on: ${{ github_runner }}
     steps:
       - name: Build and Push
-        uses: .github/workflows/steps/docker-build.yaml
+        uses: ./.github/workflows/steps/docker-build.yaml
         with: 
           push_image_bool: true
