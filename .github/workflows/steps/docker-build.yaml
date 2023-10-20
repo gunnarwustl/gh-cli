@@ -1,0 +1,26 @@
+---
+name: Build ${{ container_name }}
+
+jobs:
+  build:
+    runs-on: ${{ github_runner }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout
+
+      - name: Container Repository Login
+        uses: docker/login-action
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup BuildKit 
+        uses: docker/setup-buildx-action
+
+      - name: Build and Push Container
+        uses: docker/build-push-action
+        with: 
+          file: ${{ docker_file }}
+          tags: ${{ docker_tags }}
+          push: ${{ push_image_bool }}

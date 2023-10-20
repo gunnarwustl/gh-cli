@@ -1,0 +1,27 @@
+---
+name: Build and Push Docker Container
+
+on: 
+  workflow_dispatch:
+  pull_request: 
+    branches: [ $default_branch ]
+
+env:
+  github_runner: ubuntu-latest
+  container_name: gh-cli
+  docker_file: ubuntu20.Dockerfile
+  docker_tags: ghcr.io/gunnarwustl/gh-cli:ubuntu20
+
+jobs: 
+  diff_check:
+    runs-on: ${{ github_runner }}
+    steps:
+      - name: Diff Check
+        uses: .github/workflows/steps/diff-check.yaml
+  build:
+    runs-on: ${{ github_runner }}
+    steps:
+      - name: Build and Push
+        uses: .github/workflows/steps/docker-build.yaml
+        with: 
+          push_image_bool: true

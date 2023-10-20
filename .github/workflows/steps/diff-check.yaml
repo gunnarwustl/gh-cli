@@ -1,0 +1,19 @@
+---
+name: Diff Check
+
+jobs:
+  diff_check:
+    runs-on: ${{ github_runner }}
+    outputs:
+      ${{ container_name }}: ${{ steps.filter.outputs.${{ container_name }} }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout
+
+      - name: Examine Paths and Files
+        uses: dorny/paths-filter
+        id: filter
+        with: 
+          filters: |
+            ${{ container_name }}:
+              - ${{ docker_file }}
