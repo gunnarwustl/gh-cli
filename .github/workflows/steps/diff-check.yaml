@@ -8,10 +8,10 @@ jobs:
       ${{ container_name }}: ${{ steps.filter.outputs.${{ container_name }} }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout
+        uses: actions/checkout@v3
 
       - name: Examine Paths and Files
-        uses: dorny/paths-filter
+        uses: dorny/paths-filter@v2
         id: filter
         with: 
           filters: |
