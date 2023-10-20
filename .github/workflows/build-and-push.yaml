@@ -15,12 +15,12 @@ env:
 
 jobs: 
   diff_check:
-    runs-on: ${{ github_runner }}
+    runs-on: ${{ vars.github_runner }}
     steps:
       - name: Diff Check
         uses: ./.github/workflows/steps/diff-check.yaml
   build:
-    runs-on: ${{ github_runner }}
+    runs-on: ${{ vars.github_runner }}
     steps:
       - name: Build and Push
         uses: ./.github/workflows/steps/docker-build.yaml
