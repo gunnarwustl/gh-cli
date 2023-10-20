@@ -8,18 +8,19 @@ on:
   push:
 
 env:
+  github_runner: ubuntu-latest
   container_name: gh-cli
   docker_file: ubuntu20.Dockerfile
   docker_tags: ghcr.io/gunnarwustl/gh-cli:ubuntu20
 
 jobs: 
   diff_check:
-    runs-on: ${{ vars.RUNNER }}
+    runs-on: ${{ env.github_runner }}
     steps:
       - name: Diff Check
         uses: ./.github/workflows/steps/diff-check.yaml
   build:
-    runs-on: ${{ vars.RUNNER }}
+    runs-on: ${{ env.github_runner }}
     steps:
       - name: Build and Push
         uses: ./.github/workflows/steps/docker-build.yaml
