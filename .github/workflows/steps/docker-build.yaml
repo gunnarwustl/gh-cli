@@ -3,7 +3,7 @@ name: Build ${{ container_name }}
 
 jobs:
   build:
-    runs-on: ${{ env.github_runner }}
+    runs-on: ${{ vars.RUNNER }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
